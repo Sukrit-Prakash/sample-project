@@ -4,16 +4,21 @@ import { Star, Plus } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 import toast from "react-hot-toast";
+import {CartItem} from "../store/cartSlice"
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  rating: number;
+  thumbnail: string;
+  quantity?: number; // ✅ Allow quantity in the product type
+}
 
 interface ProductProps {
-  product: {
-    id: number;
-    title: string;
-    price: number;
-    rating: number;
-    thumbnail: string;
-  };
+  product: Product;
 }
+
 
 const ProductCard = ({ product }: ProductProps) => {
   const dispatch = useDispatch();
@@ -52,7 +57,8 @@ const ProductCard = ({ product }: ProductProps) => {
           <span className="text-xs font-bold text-white">${product.price}</span>
           <button
             onClick={() => {
-              dispatch(addToCart({ ...product, quantity: 1 }));
+              const cartItem: CartItem = { ...product, quantity: 1 }; // ✅ Explicitly create a CartItem
+              dispatch(addToCart(cartItem));
               toast.success("Product added to cart");
             }}
             className="bg-yellow-500 p-2 rounded-lg transition-colors duration-200 hover:bg-yellow-400"
