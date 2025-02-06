@@ -10,8 +10,8 @@ interface Product {
   id: number;
   title: string;
   price: number;
-  description: string; // ✅ Add missing properties
-  category: string; // ✅ Add missing properties
+  description: string; // ✅ Added missing
+  category: string; 
   rating: number;
   thumbnail: string;
   quantity?: number;

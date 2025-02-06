@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 import { addToCart } from "../store/cartSlice";
 import { useEffect, useState } from "react";
 import { Star, Minus, Plus, ArrowLeft } from "lucide-react";
-
+import toast from "react-hot-toast";
 interface Product {
   id: number;
   title: string;
@@ -78,7 +78,8 @@ const ProductDetails = () => {
 
         {/* Add to Cart Button */}
         <button
-          onClick={() => dispatch(addToCart({ ...product, quantity }))}
+          onClick={() => {dispatch(addToCart({ ...product, quantity }));
+          toast.success("Product added to cart")}}
           className="mt-6 bg-yellow-500 text-black w-full py-3 rounded-lg font-semibold hover:bg-yellow-400 transition"
         >
           Add to cart
