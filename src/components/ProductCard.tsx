@@ -10,9 +10,11 @@ interface Product {
   id: number;
   title: string;
   price: number;
+  description: string; // ✅ Add missing properties
+  category: string; // ✅ Add missing properties
   rating: number;
   thumbnail: string;
-  quantity?: number; // ✅ Allow quantity in the product type
+  quantity?: number;
 }
 
 interface ProductProps {
